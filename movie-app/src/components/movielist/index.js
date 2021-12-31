@@ -18,5 +18,5 @@ export default class MovieList extends React.Component {
 }
 
 const MoviesWrapper = styled.div`
-  position: relative;
+  padding-top: 10px;
 `
