@@ -8,35 +8,56 @@ export default class ExpandableFilter extends React.Component {
     super(props);
 
     this.state = {
-      filtersShown: true,
+      genresShown: false,
+      langShown: false,
+      ratingsSown: false,
     };
   }
 
   render() {
     const { genres, languages, ratings } = this.props;
     const handleGenres = () => {
-      this.setState({ filtersShown: !this.state.filtersShown });
+      this.setState({ genresShown: !this.state.genresShown });
     };
-    const genreDisplay = !this.state.filtersShown
+    const handleLangs = () => {
+      this.setState({ langShown: !this.state.langShown });
+    };
+    const handleRatings = () => {
+      this.setState({ ratingsSown: !this.state.ratingsSown });
+    };
+    const genreDisplay = this.state.genresShown
       ? genres.map((genre) => <li key={genre.id}>{genre.name}</li>)
-      : "+ Select genres";
-    const langDisplay = !this.state.filtersShown
+      : "";
+    const langDisplay = this.state.langShown
       ? languages.map((lang) => <li key={lang.id}>{lang.name}</li>)
-      : "+ Select languages";
-    const ratingsDisplay = !this.state.filtersShown
+      : "";
+    const ratingsDisplay = this.state.ratingsSown
       ? ratings.map((rat) => <li key={rat.id}>{rat.name}</li>)
-      : "+ Select min. vote";
+      : "";
+    const plusMinusGenres = this.state.genresShown ? "-" : "+";
+    const plusMinusVote = this.state.ratingsSown ? "-" : "+";
+    const plusMinusLang = this.state.langShown ? "-" : "+";
     return (
-      <div>
+      <Filters>
         <Checkbox
           handleGenres={handleGenres}
+          handleLangs={handleLangs}
+          handleRatings={handleRatings}
           genreDisplay={genreDisplay}
           langDisplay={langDisplay}
           ratingsDisplay={ratingsDisplay}
+          plusMinusGenres={plusMinusGenres}
+          plusMinusVote={plusMinusVote}
+          plusMinusLang={plusMinusLang}
         />
-      </div>
+      </Filters>
     );
   }
 
   // You need to create your own checkbox component with a custom checkmark
 }
+const Filters = styled.div`
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+`;

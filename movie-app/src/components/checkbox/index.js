@@ -5,26 +5,27 @@ export default class CheckBox extends React.Component {
   // Create a custom checkbox component
 
   render() {
-    const { genreDisplay, handleGenres, langDisplay, ratingsDisplay } =
+    const {handleGenres, handleLangs, handleRatings, genreDisplay, langDisplay, ratingsDisplay, plusMinusGenres, plusMinusVote, plusMinusLang } =
       this.props;
 
     return (
       <div>
         <div>
           <CheckboxCont>
-            <span onClick={handleGenres}>{genreDisplay}</span>
+            <span onClick={handleGenres}>{plusMinusGenres} Select genre(s) {genreDisplay}</span>
           </CheckboxCont>
         </div>
         <div>
           <CheckboxCont>
-            <span onClick={handleGenres}>{langDisplay}</span>
+            <span onClick={handleRatings}>{plusMinusVote} Select min. vote {ratingsDisplay}</span>
           </CheckboxCont>
         </div>
         <div>
           <CheckboxCont>
-            <span onClick={handleGenres}>{ratingsDisplay}</span>
+            <span onClick={handleLangs}> {plusMinusLang} Select language {langDisplay}</span>
           </CheckboxCont>
         </div>
+       
       </div>
     );
   }
@@ -33,5 +34,7 @@ export default class CheckBox extends React.Component {
 const CheckboxCont = styled.div`
   position: relative;
   text-align: left;
-  list-style: disc;
+  list-style-type: square;
+  padding-bottom: 10px;
+  font-weight: 600;
 `;

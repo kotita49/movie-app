@@ -26,7 +26,7 @@ export default class SearchFilters extends React.Component {
           />
           {/* Implement a "SearchBar" component and re-use it for the keyword and the year inputs */}
         </SearchFiltersCont>
-        <SearchFiltersCont>
+        <FiltersCont>
           <CategoryTitle>Movies</CategoryTitle>
 
           <ExpandableFilter
@@ -35,7 +35,7 @@ export default class SearchFilters extends React.Component {
             languages={languages}
           />
           {/* Implement a component called "ExpandableFilter" and apply it to all filter categories */}
-        </SearchFiltersCont>
+        </FiltersCont>
       </FiltersWrapper>
     );
   }
@@ -44,8 +44,17 @@ export default class SearchFilters extends React.Component {
 const FiltersWrapper = styled.div`
   position: relative;
   float: right;
-  width: 350px;
+  width: 400px;
   text-align: center;
+  @media screen and (max-width: 1200px) {
+    width: 700px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 400px;
+  }
+  @media screen and (max-width: 400px) {
+    width: 300px;
+  }
 `;
 
 const SearchFiltersCont = styled.div`
@@ -54,6 +63,10 @@ const SearchFiltersCont = styled.div`
   margin-top: 33px;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  @media screen and (max-width: 800px) {
+    background-color: ${colors.lightBackground};
+  }
 
   ${(props) =>
     props.marginBottom &&
@@ -61,5 +74,13 @@ const SearchFiltersCont = styled.div`
       margin-bottom: 15px;
     `}
 `;
+const FiltersCont = styled(SearchFiltersCont)`
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+`;
 
-const CategoryTitle = styled.div``;
+const CategoryTitle = styled.div`
+  text-align: left;
+  margin: 15px 5px;
+`;

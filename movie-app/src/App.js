@@ -13,7 +13,7 @@ export default class App extends React.Component {
     return (
       <Router>
         <PageContainer>
-          {/* <SideNavBar {...this.props} /> */}
+          <SideNavBar {...this.props} />
           <ContentWrapper>
             <Routes>
               <Route path="/discover" element={<Discover />} {...this.props} />
@@ -27,6 +27,9 @@ export default class App extends React.Component {
 
 const ContentWrapper = styled.main`
   padding-left: 280px;
+  @media screen and (max-width: 800px){
+    padding-left: 20px;
+  
 `;
 
 const PageContainer = styled.main`
