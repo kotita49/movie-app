@@ -11,7 +11,7 @@ export default class MovieItem extends React.Component {
       <MovieItemWrapper>
         <LeftCont>
           <Image
-            alt='movie'
+            alt={movie.title}
             src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`}
           />
         </LeftCont>

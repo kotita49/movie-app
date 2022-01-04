@@ -48,7 +48,8 @@ export default class Discover extends React.Component {
           genreOptions: genres,
         });
       })
-    );
+    )
+    .catch(err => console.error(err));
   }
 
   componentDidUpdate() {
@@ -63,7 +64,8 @@ export default class Discover extends React.Component {
           results: filmSearchResults,
           totalCount: filmSearchResults.length,
         });
-      });
+      })
+      .catch(err => console.error(err));
   }
   // Write a function to preload the popular movies when page loads & get the movie genres
 
