@@ -52,8 +52,9 @@ export default class Discover extends React.Component {
     .catch(err => console.error(err));
   }
 
-  componentDidUpdate() {
-    axios
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.keyword!== prevState.keyword ){
+      axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&primary_release_year=${this.state.year}&query=${this.state.keyword}`
       )
@@ -66,6 +67,8 @@ export default class Discover extends React.Component {
         });
       })
       .catch(err => console.error(err));
+    }
+    
   }
   // Write a function to preload the popular movies when page loads & get the movie genres
 

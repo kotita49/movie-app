@@ -36,7 +36,7 @@ export default class SideNavBar extends React.Component {
         </Close>
         <SideNavBarCont isOpen={isOpen}>
           {/* Implement a hamburger icon slide in effect for small devices */}
-          <SideNavMainLink className="menu_nav_link main_nav_link" to="/" exact>
+          <SideNavMainLink className="menu_nav_link main_nav_link" to="/" exact='true'>
             Wesley <ArrowImg src={Arrow} alt="arrow" />
             <NavIcon></NavIcon>
           </SideNavMainLink>
